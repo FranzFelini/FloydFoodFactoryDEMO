@@ -52,7 +52,7 @@ const Form = () => {
     reservationDate: new Date(),
     reservationTime: "17:30",
     numberOfPeople: 2,
-    phoneNumber: "1234567890",
+    phoneNumber: "",
   });
 
   async function Reserve() {
@@ -64,18 +64,12 @@ const Form = () => {
 
   return (
     <>
-      <div
-        id="reservations"
-        className="bg-white justify-center items-center w-full lg:min-h-[70vh] max-w-full flex"
-      >
+      <div id="reservations" className="bg-white justify-center items-center w-full lg:min-h-[70vh] max-w-full flex">
         <div className="w-full lg:w-[70%] lg:py-4 flex justify-center items-center gap-4 relative overflow-hidden flex-col lg:px-4 rounded-lg">
           <div className="flex flex-col gap-2 items-center rounded-xl lg:p-6 w-full z-20 max-w-[90%] lg:max-w-[60%]">
             {formFields.map((field) => (
               <div key={field.id} className="w-full pr-4 flex flex-col gap-1">
-                <label
-                  htmlFor={field.id}
-                  className="text-lg font-medium align-center relative"
-                >
+                <label htmlFor={field.id} className="text-lg font-medium align-center relative">
                   {field.label}
                 </label>
 
@@ -93,16 +87,12 @@ const Form = () => {
                 ) : field.type === "time" ? (
                   <TimeSelect
                     time={formState.reservationTime}
-                    setTime={(time) =>
-                      setFormState({ ...formState, reservationTime: time })
-                    }
+                    setTime={(time) => setFormState({ ...formState, reservationTime: time })}
                   />
                 ) : field.type === "phone" ? (
                   <PhoneInput
                     value={formState.phoneNumber}
-                    onChange={(value) =>
-                      setFormState({ ...formState, phoneNumber: value })
-                    }
+                    onChange={(value) => setFormState({ ...formState, phoneNumber: value })}
                     defaultCountry="ME"
                   />
                 ) : (
