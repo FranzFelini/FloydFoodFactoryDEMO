@@ -46,7 +46,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
           flagComponent={FlagComponent}
           countrySelectComponent={CountrySelect}
           inputComponent={InputComponent}
-          // @ts-ignore
+          // @ts-expect-error - Broken stuff
           onChange={(value) => onChange?.(value || "")}
           {...props}
         />

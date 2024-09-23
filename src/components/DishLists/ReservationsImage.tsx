@@ -1,5 +1,7 @@
+import Image from "next/image";
+
 function ReservationImage() {
-  return <img src="/sto.jpeg" alt="" />;
+  return <Image src="/sto.jpeg" alt="" />;
 }
 
 export default function Prikaz2() {

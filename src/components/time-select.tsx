@@ -1,4 +1,10 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface TimeSelectProps {
   time: string;
@@ -15,9 +21,9 @@ for (let i = openingTime; i <= closingTime; i++) {
   timeOptions.push(String(i) + ":30");
 }
 
-export const TimeSelect: React.FC<TimeSelectProps> = ({ }) => {
+export const TimeSelect: React.FC<TimeSelectProps> = ({ time, setTime }) => {
   return (
-    <Select>
+    <Select value={time} onValueChange={setTime}>
       <SelectTrigger className="w-full border-gray-500 border rounded-xl text-lg h-[50px]">
         <SelectValue placeholder="Select a time" />
       </SelectTrigger>
