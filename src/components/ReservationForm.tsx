@@ -54,6 +54,9 @@ const Form = () => {
     phoneNumber: "1234567890",
   });
 
+  // TASK: Write a function that will, when reserve button is clickedf,
+  // print out the state to the console and use alert(JSON.stringify(/* state */), null, 2) to print it to the console and alert it
+
   return (
     <>
       <div id="reservations" className="bg-white justify-center items-center w-full lg:min-h-[70vh] max-w-full flex">
