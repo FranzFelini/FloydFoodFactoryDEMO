@@ -1,5 +1,6 @@
 "use client";
 
+import { FormState, handleSubmit } from "@/api/form-submit";
 import { useState } from "react";
 import { TimeSelect } from "./time-select";
 import { DatePicker } from "./ui/date-picker";
@@ -46,7 +47,7 @@ const formFields: FormField[] = [
 ];
 
 const Form = () => {
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<FormState>({
     fullName: "",
     reservationDate: new Date(),
     reservationTime: "17:30",
@@ -54,9 +55,8 @@ const Form = () => {
     phoneNumber: "1234567890",
   });
 
-  function Reserve() {
-    console.log(formState);
-    alert(JSON.stringify(formState, null, 2));
+  async function Reserve() {
+    console.log(await handleSubmit(formState));
   }
 
   // TASK: Write a function that will, when reserve button is clickedf,
@@ -98,7 +98,13 @@ const Form = () => {
                     }
                   />
                 ) : field.type === "phone" ? (
-                  <PhoneInput defaultCountry="ME" />
+                  <PhoneInput
+                    value={formState.phoneNumber}
+                    onChange={(value) =>
+                      setFormState({ ...formState, phoneNumber: value })
+                    }
+                    defaultCountry="ME"
+                  />
                 ) : (
                   <input
                     type={field.type}

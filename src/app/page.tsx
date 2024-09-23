@@ -1,10 +1,10 @@
 import { FaFacebook, FaInstagram, FaTripadvisor } from "react-icons/fa";
-import Prikaz from "../components/Img1CMP";
-import { Nav } from "../components/Nav";
 import DishGallery from "../components/DishLists/dishcardcmp";
 import DishGallery2 from "../components/DishLists/dishcardcmp2";
 import DishGallery3 from "../components/DishLists/dishcardcmp3";
 import { Divider } from "../components/Divider";
+import Prikaz from "../components/Img1CMP";
+import { Nav } from "../components/Nav";
 import Form from "../components/ReservationForm";
 import { Section } from "../components/SectionTitle";
 
@@ -72,16 +72,21 @@ function App() {
 
       <div
         id="about"
-        className="bg-white height-[70vh] flex justify-center items-`center relative xl:flex-row flex-col p-4 text-center gap-8 max-w-7xl mx-auto"
+        className="bg-white height-[70vh] flex justify-center items-center relative xl:flex-row flex-col p-4 text-center gap-8 max-w-7xl mx-auto"
       >
         <div>
-          <h1 className="text-3xl p-[1rem] font-[Fira Sans Serif] font-bold">About us</h1>
+          <h1 className="text-3xl p-[1rem] font-[Fira Sans Serif] font-bold">
+            About us
+          </h1>
           <p className="w-full max-w-xl p-[1rem] mb-3">
-            Floyd Food Factory is a restaurant established in 2018. Our goal is to provide our customers with the best
-            dining experience. We offer a wide range of dishes, from traditional to modern cuisine. We use only the
-            freshest homegrown ingredients to create delicious and healthy meals. Whether you are looking for a romantic
-            dinner for two or a fun night out with friends, Floyd Food Factory is the perfect place to be. Come and
-            visit us today and enjoy a memorable dining experience!
+            Floyd Food Factory is a restaurant established in 2018. Our goal is
+            to provide our customers with the best dining experience. We offer a
+            wide range of dishes, from traditional to modern cuisine. We use
+            only the freshest homegrown ingredients to create delicious and
+            healthy meals. Whether you are looking for a romantic dinner for two
+            or a fun night out with friends, Floyd Food Factory is the perfect
+            place to be. Come and visit us today and enjoy a memorable dining
+            experience!
           </p>
 
           <div className="flex justify-center items-center gap-6 text-4xl">
@@ -141,7 +146,10 @@ function App() {
         }}
       >
         <div>
-          <p className="min-w-4 max-w-70">&copy; {new Date().getFullYear()} Floyd Food Factory. All rights reserved.</p>
+          <p className="min-w-4 max-w-70">
+            &copy; {new Date().getFullYear()} Floyd Food Factory. All rights
+            reserved.
+          </p>
         </div>
       </footer>
     </div>
