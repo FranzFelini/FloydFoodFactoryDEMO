@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TimeSelect } from "./time-select";
 import { DatePicker } from "./ui/date-picker";
 import { PhoneInput } from "./ui/phone-input";
@@ -16,31 +16,31 @@ const formFields: FormField[] = [
   {
     label: "Full name",
     type: "text",
-    id: "FullName",
+    id: "fullName",
     placeholder: "Eg. John Doe",
   },
   {
     label: "Reservation date",
     type: "date",
-    id: "ReservationDate",
+    id: "reservationDate",
     placeholder: "Reservation date",
   },
   {
     label: "Reservation time",
     type: "time",
-    id: "ReservationTime",
+    id: "reservationTime",
     placeholder: "Reservation time",
   },
   {
     label: "How many people?",
     type: "number",
-    id: "NumberOfPeople",
+    id: "numberOfPeople",
     placeholder: "Eg. 5",
   },
   {
     label: "Your Local phone number?",
     type: "phone",
-    id: "PhoneNumber",
+    id: "phoneNumber",
     placeholder: "Eg. 1234567890",
   },
 ];
@@ -83,6 +83,13 @@ const Form = () => {
                     type={field.type}
                     id={field.id}
                     placeholder={field.placeholder}
+                    value={formState[field.id as "fullName" | "numberOfPeople"]}
+                    onChange={(e) =>
+                      setFormState({
+                        ...formState,
+                        [field.id]: e.target.value,
+                      })
+                    }
                     className="w-full border border-gray-500 rounded-xl py-2 px-4 text-lg font-sans h-[50px]"
                   />
                 )}
