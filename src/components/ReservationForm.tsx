@@ -14,16 +14,10 @@ interface FormField {
 
 const formFields: FormField[] = [
   {
-    label: "First name",
+    label: "Full name",
     type: "text",
-    id: "FirstName",
-    placeholder: "First name",
-  },
-  {
-    label: "Last name",
-    type: "text",
-    id: "LastName",
-    placeholder: "Last name",
+    id: "FullName",
+    placeholder: "Eg. John Doe",
   },
   {
     label: "Reservation date",
@@ -41,19 +35,24 @@ const formFields: FormField[] = [
     label: "How many people?",
     type: "number",
     id: "NumberOfPeople",
-    placeholder: "How many people?",
+    placeholder: "Eg. 5",
   },
   {
     label: "Your Local phone number?",
     type: "phone",
     id: "PhoneNumber",
-    placeholder: "Your Local phone number?",
+    placeholder: "Eg. 1234567890",
   },
 ];
 
 const Form = () => {
-  const [time, setTime] = useState("17:30");
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [formState, setFormState] = useState({
+    fullName: "",
+    reservationDate: new Date(),
+    reservationTime: "17:30",
+    numberOfPeople: 2,
+    phoneNumber: "1234567890",
+  });
 
   return (
     <>
@@ -69,13 +68,16 @@ const Form = () => {
                 {field.type === "date" ? (
                   <DatePicker
                     className="w-full border border-gray-500 rounded-xl h-[50px]"
-                    date={date ?? new Date()}
-                    setDate={setDate}
+                    date={formState.reservationDate}
+                    setDate={(date) => setFormState({ ...formState, reservationDate: date ?? new Date() })}
                   />
                 ) : field.type === "time" ? (
-                  <TimeSelect time={time} setTime={setTime} />
+                  <TimeSelect
+                    time={formState.reservationTime}
+                    setTime={(time) => setFormState({ ...formState, reservationTime: time })}
+                  />
                 ) : field.type === "phone" ? (
-                  <PhoneInput />
+                  <PhoneInput defaultCountry="ME" />
                 ) : (
                   <input
                     type={field.type}
