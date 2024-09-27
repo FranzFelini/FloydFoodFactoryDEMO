@@ -5,6 +5,9 @@ import { useState } from "react";
 import { TimeSelect } from "./time-select";
 import { DatePicker } from "./ui/date-picker";
 import { PhoneInput } from "./ui/phone-input";
+import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { FaSpinner } from "react-icons/fa";
 
 interface FormField {
   label: string;
@@ -60,10 +63,21 @@ const Form = () => {
     numberOfPeople: 2,
     phoneNumber: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   async function Reserve() {
-    alert(JSON.stringify(formState));
-    console.log(await handleSubmit(formState));
+    setLoading(true);
+
+    const response = await handleSubmit(formState);
+    if (!response.success) {
+      setError(response.message);
+      setLoading(false);
+      return;
+    } else {
+      router.push("/reservation-success");
+    }
   }
 
   // TASK: Write a function that will, when reserve button is clickedf,
@@ -121,26 +135,26 @@ const Form = () => {
             ))}
           </div>
 
+          {error && <p className="text-red-500">{error}</p>}
+
           <button
             onClick={Reserve}
-            style={{
-              display: "flex",
-              borderRadius: "13px",
-              border: "1px solid black",
-              padding: "1em",
-              width: "50%",
-              marginTop: "1.5em",
-              color: "white",
-              justifyContent: "center",
-              alignItems: "center",
-              fontWeight: "bold",
-              fontFamily: "Fira Sans Condensed",
-              zIndex: 2,
-              backgroundColor: "#8D7BD6",
-              letterSpacing: "1.2px",
-            }}
+            disabled={loading}
+            className={cn(
+              "flex justify-center items-center text-white",
+              "rounded-lg border border-gray-500 px-12 py-2",
+              "text-lg font-[Fira_Sans_Condensed] font-bold z-[2] bg-[#8D7BD6] tracing-wider",
+              "hover:bg-[#8D7BD6]/90 transition-all",
+              "disabled:bg-[#8D7BD6]/50 disabled:cursor-not-allowed",
+            )}
           >
-            Reserve now
+            {loading ? (
+              <div className="flex items-center gap-2">
+                Sending... <FaSpinner className="animate-spin h-5 w-5 text-white" />
+              </div>
+            ) : (
+              "Reserve now"
+            )}
           </button>
         </div>
       </div>
