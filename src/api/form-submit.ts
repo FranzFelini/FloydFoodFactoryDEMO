@@ -3,6 +3,14 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const keyNamesToLabelMap = {
+  fullName: "Full Name  ",
+  reservationDate: "Reservation Date ",
+  reservationTime: "Reservation Time ",
+  numberOfPeople: "Number of people ",
+  phoneNumber: "Phone Number ",
+};
+
 export interface FormState {
   fullName: string;
   reservationDate: Date;
@@ -17,7 +25,7 @@ export async function handleSubmit(values: FormState) {
         ${Object.keys(values)
           .map(
             (key) =>
-              `<p style="margin-bottom: 1rem">${key}: ${
+              `<p style="margin-bottom: 1rem">${keyNamesToLabelMap[key]}: ${
                 values[key as keyof FormState]
               }</p>`
           )
@@ -26,7 +34,7 @@ export async function handleSubmit(values: FormState) {
   `;
 
   const response = await resend.emails.send({
-    to: "me@qoobes.dev",
+    to: "arnautovic.feda@gmail.com",
     from: "me@qoobes.com",
     subject: "Floyd Food Factory Reservation",
     html: emailContent,
