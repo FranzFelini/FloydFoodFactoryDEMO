@@ -1,0 +1,5 @@
+- Implement phone validator 
+- Implement button for menu
+- Gmail, phonenumber respinse // API
+- Menu component images
+- Finish footer

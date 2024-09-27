@@ -15,7 +15,12 @@ export async function handleSubmit(values: FormState) {
   const emailContent = `
       <div>
         ${Object.keys(values)
-          .map((key) => `<p style="margin-bottom: 1rem">${key}: ${values[key as keyof FormState]}</p>`)
+          .map(
+            (key) =>
+              `<p style="margin-bottom: 1rem">${key}: ${
+                values[key as keyof FormState]
+              }</p>`
+          )
           .join("")}
       </div>
   `;
@@ -31,7 +36,8 @@ export async function handleSubmit(values: FormState) {
     console.log(response.error);
     return {
       success: false,
-      message: "Something went wrong. Please contact support or try again later.",
+      message:
+        "Something went wrong. Please contact support or try again later.",
     };
   }
 

@@ -1,3 +1,4 @@
+import Menupopup from "@/components/PopUps/menupopup";
 import { FaFacebook, FaInstagram, FaTripadvisor } from "react-icons/fa";
 import DishGallery from "../components/DishLists/dishcardcmp";
 import DishGallery2 from "../components/DishLists/dishcardcmp2";
@@ -44,11 +45,10 @@ function App() {
           }}
         />
       </div>
-
       <div className="z-20">
         <Nav />
       </div>
-
+      / <Menupopup /> /
       <h4 className="p-[1rem] font-[Copperplate] font-bold tracking-tight justify-self-center text-center mb-[2rem`] text-4xl mt-20 pb-">
         Make an reservation
       </h4>
@@ -59,17 +59,13 @@ function App() {
       <Section text="MENU">
         <DishGallery />
       </Section>
-
       <Section text="CHILDREN'S SURPRISE">
         <DishGallery2 />
       </Section>
-
       <Section text="VEGAN DISHES">
         <DishGallery3 />
       </Section>
-
       <Divider />
-
       <div
         id="about"
         className="bg-white height-[70vh] flex justify-center items-center relative xl:flex-row flex-col p-4 text-center gap-8 max-w-7xl mx-auto"
@@ -131,7 +127,6 @@ function App() {
           </a>
         </div>
       </div>
-
       <footer
         style={{
           backgroundColor: "black",
