@@ -1,13 +1,13 @@
 "use client";
 
 import { FormState, handleSubmit } from "@/api/form-submit";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { TimeSelect } from "./time-select";
 import { DatePicker } from "./ui/date-picker";
 import { PhoneInput } from "./ui/phone-input";
-import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { FaSpinner } from "react-icons/fa";
 
 interface FormField {
   label: string;
@@ -85,12 +85,18 @@ const Form = () => {
 
   return (
     <>
-      <div id="reservations" className="bg-white justify-center items-center w-full lg:min-h-[70vh] max-w-full flex">
+      <div
+        id="reservations"
+        className="bg-white justify-center items-center w-full lg:min-h-[70vh] max-w-full flex"
+      >
         <div className="w-full lg:w-[70%] lg:py-4 flex justify-center items-center gap-4 relative overflow-hidden flex-col lg:px-4 rounded-lg">
           <div className="flex flex-col gap-2 items-center rounded-xl lg:p-6 w-full z-20 max-w-[90%] lg:max-w-[60%]">
             {formFields.map((field) => (
               <div key={field.id} className="w-full pr-4 flex flex-col gap-1">
-                <label htmlFor={field.id} className="text-lg font-medium align-center relative">
+                <label
+                  htmlFor={field.id}
+                  className="text-lg font-medium align-center relative"
+                >
                   {field.label}
                 </label>
 
@@ -108,12 +114,16 @@ const Form = () => {
                 ) : field.type === "time" ? (
                   <TimeSelect
                     time={formState.reservationTime}
-                    setTime={(time) => setFormState({ ...formState, reservationTime: time })}
+                    setTime={(time) =>
+                      setFormState({ ...formState, reservationTime: time })
+                    }
                   />
                 ) : field.type === "phone" ? (
                   <PhoneInput
                     value={formState.phoneNumber}
-                    onChange={(value) => setFormState({ ...formState, phoneNumber: value })}
+                    onChange={(value) =>
+                      setFormState({ ...formState, phoneNumber: value })
+                    }
                     defaultCountry="ME"
                   />
                 ) : (
@@ -145,12 +155,13 @@ const Form = () => {
               "rounded-lg border border-gray-500 px-12 py-2",
               "text-lg font-[Fira_Sans_Condensed] font-bold z-[2] bg-[#8D7BD6] tracing-wider",
               "hover:bg-[#8D7BD6]/90 transition-all",
-              "disabled:bg-[#8D7BD6]/50 disabled:cursor-not-allowed",
+              "disabled:bg-[#8D7BD6]/50 disabled:cursor-not-allowed"
             )}
           >
             {loading ? (
               <div className="flex items-center gap-2">
-                Sending... <FaSpinner className="animate-spin h-5 w-5 text-white" />
+                Sending...{" "}
+                <FaSpinner className="animate-spin h-5 w-5 text-white" />
               </div>
             ) : (
               "Reserve now"
