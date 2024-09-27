@@ -39,6 +39,12 @@ const formFields: FormField[] = [
     placeholder: "Eg. 5",
   },
   {
+    label: "Your Email?",
+    type: "email",
+    id: "email",
+    placeholder: "Eg. johndoe@gmail.com",
+  },
+  {
     label: "Your Local phone number?",
     type: "phone",
     id: "phoneNumber",
@@ -56,6 +62,7 @@ const Form = () => {
   });
 
   async function Reserve() {
+    alert(JSON.stringify(formState));
     console.log(await handleSubmit(formState));
   }
 
