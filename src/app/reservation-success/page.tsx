@@ -5,7 +5,7 @@ export default function ReservationSuccess() {
   return (
     <div className="flex items-center justify-center w-screen h-screen flex-col gap-4">
       <img
-        src="/floyd-logo.png"
+        src="/reservationlogo.png"
         alt="Floyd Food Factory Logo"
         className="w-[300px] h-auto"
       />
