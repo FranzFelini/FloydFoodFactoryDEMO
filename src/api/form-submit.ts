@@ -25,9 +25,9 @@ export async function handleSubmit(values: FormState) {
         ${Object.keys(values)
           .map(
             (key) =>
-              `<p style="margin-bottom: 1rem">${keyNamesToLabelMap}: ${
-                values[key as keyof FormState]
-              }</p>`
+              `<p style="margin-bottom: 1rem">${
+                keyNamesToLabelMap[key as keyof FormState]
+              }: ${values[key as keyof FormState]}</p>`
           )
           .join("")}
       </div>
