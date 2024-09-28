@@ -1,4 +1,3 @@
-import Meni from "@/components/PopUps/menupopup";
 import { FaFacebook, FaInstagram, FaTripadvisor } from "react-icons/fa";
 import DishGallery from "../components/DishLists/dishcardcmp";
 import DishGallery2 from "../components/DishLists/dishcardcmp2";
@@ -49,14 +48,13 @@ function App() {
         <Nav />
       </div>
       <h4 className="p-[1rem] font-[Copperplate] font-bold tracking-tight justify-self-center text-center mb-[2rem`] text-4xl mt-10 pb-">
-        Make an reservation
+        Want to reserve a table ?
       </h4>
       <div className="flex justify-center align-center">
         <div className="bg-black w-[530px] h-[0.1em] mb-6"></div>
       </div>
       <Form />
       <Section text="MENU">
-        <Meni />
         <DishGallery />
       </Section>
       <Section text="CHILDREN'S SURPRISE">

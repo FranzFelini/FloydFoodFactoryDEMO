@@ -1,11 +1,15 @@
 const LINKS = [
   {
+    label: "Reservations",
+    href: "#reservations",
+  },
+  {
     label: "Menu",
     href: "#menu",
   },
   {
-    label: "Reservations",
-    href: "#reservations",
+    label: "Prices",
+    href: "/meni.pdf",
   },
   {
     label: "About",

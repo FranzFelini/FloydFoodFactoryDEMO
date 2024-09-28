@@ -120,11 +120,13 @@ const Form = () => {
                   />
                 ) : field.type === "phone" ? (
                   <PhoneInput
+                    className="text-lg font-medium align-center relative"
                     value={formState.phoneNumber}
                     onChange={(value) =>
                       setFormState({ ...formState, phoneNumber: value })
                     }
                     defaultCountry="ME"
+                    placeholder={field.placeholder}
                   />
                 ) : (
                   <input
