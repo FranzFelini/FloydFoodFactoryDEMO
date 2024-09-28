@@ -3,15 +3,6 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const keyNamesToLabelMap = {
-  fullName: "Full Name  ",
-  reservationDate: "Reservation Date ",
-  reservationTime: "Reservation Time ",
-  numberOfPeople: "Number of people ",
-  phoneNumber: "Phone Number ",
-  email: "Email ",
-};
-
 export interface FormState {
   fullName: string;
   reservationDate: Date;
@@ -22,10 +13,10 @@ export interface FormState {
 }
 
 export async function handleSubmit(values: FormState) {
-  const floydEmailResult = await sendFloydEmail(values);
-  const userEmailTresult = await sendUserEmail(values);
+  const FloydEmailResult = await FloydEmail(values);
+  const UserEmailResult = await UserEmail(values);
 
-  if (!floydEmailResult || !userEmailTresult) {
+  if (!FloydEmailResult || !UserEmailResult) {
     return {
       success: false,
       message: "Reservation failed",
@@ -33,55 +24,49 @@ export async function handleSubmit(values: FormState) {
   }
   return {
     success: true,
-    message: "Reservation successful",
+    message: "Reservation success",
   };
 }
 
-async function sendFloydEmail(values: FormState) {
+async function FloydEmail(values: FormState) {
   const emailContent = `
-  <div>
-    ${Object.keys(values)
-      .map(
-        (key) =>
-          `<p style="margin-bottom: 1rem">${
-            keyNamesToLabelMap[key as keyof FormState]
-          }: ${values[key as keyof FormState]}</p>`
-      )
-      .join("")}
-  </div>
-`;
+  Full Name : ${values.fullName}
+  <br>
+  Reservation Date : ${values.reservationDate}
+  <br>
+  Reservation Time : ${values.reservationTime}
+  <br>
+  Number of people : ${values.numberOfPeople}
+  <br>
+  Phone number : ${values.phoneNumber}
+  <br>
+  Email : ${values.email}`;
 
   const response = await resend.emails.send({
+    from: "reservations@qoobes.com",
     to: "arnautovic.feda@gmail.com",
-    from: "me@qoobes.com",
     subject: "Floyd Food Factory Reservation",
     html: emailContent,
   });
 
   if (response.error) {
-    console.log(response.error);
     return false;
   }
-
   return true;
 }
 
-async function sendUserEmail(values: FormState) {
-  const emailContent = `
-  <div> Reservation Successful! Thank you mr/mrs${values.fullName}! </div>
-`;
+async function UserEmail(values: FormState) {
+  const emailContent = `<div><p>Reservation sucessful thank you mr/mrs. ${values.fullName}</p></div>`;
 
   const response = await resend.emails.send({
-    to: values.email,
     from: "reservations@qoobes.com",
+    to: values.email,
     subject: "Floyd Food Factory Reservation",
     html: emailContent,
   });
 
   if (response.error) {
-    console.log(response.error);
     return false;
   }
-
   return true;
 }

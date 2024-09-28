@@ -59,7 +59,7 @@ const Form = () => {
   const [formState, setFormState] = useState<FormState>({
     fullName: "",
     reservationDate: new Date(),
-    reservationTime: "17:30",
+    reservationTime: "8:00",
     numberOfPeople: 2,
     email: "",
     phoneNumber: "",
