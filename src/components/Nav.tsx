@@ -1,9 +1,5 @@
 const LINKS = [
   {
-    label: "Reservations",
-    href: "#reservations",
-  },
-  {
     label: "Menu",
     href: "#menu",
   },
@@ -12,7 +8,7 @@ const LINKS = [
     href: "/meni.pdf",
   },
   {
-    label: "About",
+    label: "About Us",
     href: "#about",
   },
 ];

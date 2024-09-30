@@ -7,7 +7,6 @@ import Prikaz from "../components/Img1CMP";
 import { Nav } from "../components/Nav";
 import Form from "../components/ReservationForm";
 import { Section } from "../components/SectionTitle";
-
 const SOCIAL_ICONS = [
   {
     icon: <FaInstagram />,
@@ -48,10 +47,11 @@ function App() {
         <Nav />
       </div>
       <h4 className="p-[1rem] font-[Copperplate] font-bold tracking-tight justify-self-center text-center mb-[2rem`] text-4xl mt-10 pb-">
-        Want to reserve a table ?
+        Make a Reservation for a Memorable Meal!
       </h4>
+
       <div className="flex justify-center align-center">
-        <div className="bg-black w-[530px] h-[0.1em] mb-6"></div>
+        <div className="bg-black w-[800px] h-[0.1em] mb-6"></div>
       </div>
       <Form />
       <Section text="MENU">

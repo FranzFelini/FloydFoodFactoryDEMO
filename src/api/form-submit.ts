@@ -19,7 +19,8 @@ export async function handleSubmit(values: FormState) {
   if (!FloydEmailResult || !UserEmailResult) {
     return {
       success: false,
-      message: "Reservation failed",
+      message:
+        "Reservation failed, Fields : Full name, Number of People, Time, Date and Email are reqired ",
     };
   }
   return {
@@ -43,7 +44,7 @@ async function FloydEmail(values: FormState) {
   Email : ${values.email}`;
 
   const response = await resend.emails.send({
-    from: "reservations@qoobes.com",
+    from: "Floyd-Food-Factory-Reservations@qoobes.com",
     to: "arnautovic.feda@gmail.com",
     subject: "Floyd Food Factory Reservation",
     html: emailContent,
@@ -56,10 +57,11 @@ async function FloydEmail(values: FormState) {
 }
 
 async function UserEmail(values: FormState) {
-  const emailContent = `<div><p>Reservation sucessful thank you mr/mrs. ${values.fullName}</p></div>`;
+  const emailContent = `<div><p> Thank you mr/mrs. ${values.fullName} , your reservation is set on ${values.reservationDate} at ${values.reservationTime}. <br>
+  The table is reserved for ${values.numberOfPeople} people. We're looing forward to seeing you ! </p></div>`;
 
   const response = await resend.emails.send({
-    from: "reservations@qoobes.com",
+    from: "Floyd-Food-Factory-Reservations@qoobes.com",
     to: values.email,
     subject: "Floyd Food Factory Reservation",
     html: emailContent,

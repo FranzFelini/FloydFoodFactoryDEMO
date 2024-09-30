@@ -81,9 +81,6 @@ const Form = () => {
     }
   }
 
-  // TASK: Write a function that will, when reserve button is clickedf,
-  // print out the state to the console and use alert(JSON.stringify(/* state */), null, 2) to print it to the console and alert it
-
   return (
     <>
       <div
@@ -142,6 +139,7 @@ const Form = () => {
                       })
                     }
                     className="w-full border border-gray-500 rounded-xl py-2 px-4 text-lg font-sans h-[50px]"
+                    required
                   />
                 )}
               </div>
@@ -170,6 +168,7 @@ const Form = () => {
               "Reserve now"
             )}
           </button>
+          <p>Your phone number is not required</p>
         </div>
       </div>
     </>
