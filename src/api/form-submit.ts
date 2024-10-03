@@ -17,11 +17,11 @@ export async function handleSubmit(values: FormState) {
   const UserEmailResult = await UserEmail(values);
 
   if (!FloydEmailResult || !UserEmailResult) {
-    return {
-      success: false,
-      message:
-        "Reservation failed, Fields : Full name, Number of People, Time, Date and Email are reqired ",
-    };
+    if ((values.email = " "))
+      return {
+        success: false,
+        message: "email reqired",
+      };
   }
   return {
     success: true,
@@ -61,7 +61,7 @@ async function UserEmail(values: FormState) {
   The table is reserved for ${values.numberOfPeople} people. We're looing forward to seeing you ! </p></div>`;
 
   const response = await resend.emails.send({
-    from: "Floyd-Food-Factory-Reservations@qoobes.com",
+    from: "Floyd-Food-FactoryReservations@qoobes.com",
     to: values.email,
     subject: "Floyd Food Factory Reservation",
     html: emailContent,

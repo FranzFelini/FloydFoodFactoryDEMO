@@ -60,8 +60,8 @@ const Form = () => {
     fullName: "",
     reservationDate: new Date(),
     reservationTime: "8:00",
-    numberOfPeople: 2,
-    email: "",
+    numberOfPeople: 0,
+    email: " ",
     phoneNumber: "",
   });
   const [loading, setLoading] = useState(false);
