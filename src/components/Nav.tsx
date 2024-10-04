@@ -1,14 +1,14 @@
 const LINKS = [
   {
-    label: "Menu",
+    label: "MENU",
     href: "#menu",
   },
   {
-    label: "Prices",
+    label: "PRICES",
     href: "/meni.pdf",
   },
   {
-    label: "About Us",
+    label: "ABOUTS US",
     href: "#about",
   },
 ];
